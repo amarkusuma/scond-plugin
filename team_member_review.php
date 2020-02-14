@@ -100,21 +100,5 @@ function add_team_review_fields($team_review_id, $team_review)
     }
 }
 
-add_filter('template_include', 'include_template_function', 1);
 
-function include_template_function($template_path)
-{
-    if (get_post_type() == 'team_members') {
-        if (is_single()) {
-            // checks if the file exists in the theme first,
-            // otherwise serve the file from the plugin
-            if ($theme_file = locate_template(array('single-team_member.php'))) {
-                $template_path = $theme_file;
-            } else {
-                $template_path = plugin_dir_path(__FILE__) . '/single-team_members.php';
-            }
-        }
-    }
-    return $template_path;
-}
 ?>

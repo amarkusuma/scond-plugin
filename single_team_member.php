@@ -6,7 +6,6 @@ add_shortcode('member', 'teamMember');
 
 function team_member($wp_position, $wp_email, $wp_website, $wp_image)
 {
-    get_header();
 ?>
     <div class="content">
         <div id="content" role="main">
@@ -27,7 +26,7 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
 
                 <table class="table-form" border="0" width="100%" cellpadding="0" cellspacing="0" style="color: crimson ;font-size: 20px">
 
-                    <?php if ($wp_position != 0) {
+                    <?php if (!empty($wp_position)) {
                         echo '
                     
                         <tr>
@@ -38,7 +37,7 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
                     
                     ';
                     } ?>
-                    <?php if ($wp_email != 0) {
+                    <?php if (!empty($wp_email)) {
                         echo ' 
                     <tr>
                         <td width="40%"> Email </td>
@@ -48,7 +47,7 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
                     
                     ';
                     } ?>
-                    <?php if ($wp_website != 0) {
+                    <?php if (!empty($wp_website)) {
                         echo ' 
                     <tr>
                         <td width="40%"> Website </td>
@@ -57,7 +56,7 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
                     </tr>
                     ';
                     } ?>
-                    <?php if ($wp_image != 0) {
+                    <?php if (!empty($wp_image)) {
                         echo '
                     <tr>
                         <td width="40%"> Image </td>
