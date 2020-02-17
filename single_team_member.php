@@ -56,12 +56,15 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
                     </tr>
                     ';
                     } ?>
-                    <?php if (!empty($wp_image)) {
+                    <?php
+                    $image = get_post_meta(get_the_ID(), 'image', true);
+                    if (!empty($wp_image)) {
                         echo '
                     <tr>
                         <td width="40%"> Image </td>
                         <td width="1%">:</td>
-                        <td><img src="' . $image . '" alt=""></td>
+                        
+                        <td><img src="' . wp_get_attachment_url($image) . '" alt=""></td>
                     </tr>
                     ';
                     } ?>

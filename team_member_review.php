@@ -22,6 +22,7 @@ function display_team_review_meta_box($team_review)
     $website = esc_html(get_post_meta($team_review->ID, 'website', true));
     $image = get_post_meta($team_review->ID, 'image', true);
     // $team_rating = intval(get_post_meta($team_review->ID, 'team_rating', true));
+    $attachment_id = attachment_url_to_postid($image);
 ?>
     <table>
 
@@ -91,11 +92,23 @@ function add_team_review_fields($team_review_id, $team_review)
 
             $file = $_FILES['wp_image'];
             $upload = wp_handle_upload($file, array('test_form' => false));
-            echo 'amar';
-            // if ($upload['url'] != null) {
-            //     update_post_meta($team_review_id, 'image', $upload['url']);
-            // }
-            update_post_meta($team_review_id, 'image', $upload['url']);
+
+            $arr_file_type = wp_check_filetype(basename($_FILES['wp_image']['name']));
+            $uploaded_file_type = $arr_file_type['type'];
+            $title      = $file['name'];
+
+
+            // Set up options array to add this file as an attachment
+            $attachment = array(
+                'post_mime_type' => $uploaded_file_type,
+                'post_title' => 'Uploaded image ' . addslashes($title),
+                'post_content' => '',
+                'post_status' => 'inherit',
+                'post_parent' => $team_review_id
+            );
+            $attach_id = wp_insert_attachment($attachment, $upload['file']);
+
+            update_post_meta($team_review_id, 'image', $attach_id);
         }
     }
 }
