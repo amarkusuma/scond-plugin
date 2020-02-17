@@ -22,7 +22,9 @@ function display_team_review_meta_box($team_review)
     $website = esc_html(get_post_meta($team_review->ID, 'website', true));
     $image = get_post_meta($team_review->ID, 'image', true);
     // $team_rating = intval(get_post_meta($team_review->ID, 'team_rating', true));
-    // $attachment_id = attachment_url_to_postid($image);
+    $attachment = wp_get_attachment_url($image, 'medium', true, true);
+    $attachment_id = wp_get_attachment_image_src($image, array('20px', '20px'));
+
 ?>
     <table>
 
@@ -47,6 +49,16 @@ function display_team_review_meta_box($team_review)
             <td style="width: 50%"> Website </td>
             <td>:</td>
             <td><input type="text" size="30" name="wp_website" value="<?php echo $website ?>" /></td>
+        </tr>
+
+        <tr>
+
+            <td style="width: 50%"></td>
+            <td></td>
+            <td>
+                <img src="<?php echo $attachment ?>" width="" alt="">
+            </td>
+
         </tr>
         <tr>
 
