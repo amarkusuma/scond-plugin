@@ -1,6 +1,4 @@
 <?php
-/*Template Name: New Template
- */
 
 add_shortcode('member', 'teamMember');
 
@@ -57,7 +55,7 @@ function team_member($wp_position, $wp_email, $wp_website, $wp_image)
                     ';
                     } ?>
                     <?php
-                    $image = get_post_meta(get_the_ID(), 'image', true);
+
                     if (!empty($wp_image)) {
                         echo '
                     <tr>

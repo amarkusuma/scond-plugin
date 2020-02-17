@@ -56,7 +56,7 @@ function display_team_review_meta_box($team_review)
             <td style="width: 50%"></td>
             <td></td>
             <td>
-                <img src="<?php echo $attachment ?>" width="" alt="">
+                <img src="<?php echo $attachment ?>" width=" ?>" alt="">
             </td>
 
         </tr>
