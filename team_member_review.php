@@ -22,7 +22,7 @@ function display_team_review_meta_box($team_review)
     $website = esc_html(get_post_meta($team_review->ID, 'website', true));
     $image = get_post_meta($team_review->ID, 'image', true);
     // $team_rating = intval(get_post_meta($team_review->ID, 'team_rating', true));
-    $attachment = wp_get_attachment_url($image, 'medium', true, true);
+    $attachment = wp_get_attachment_url($image);
     // $attachment_id = wp_get_attachment_image_src($image, array('20px', '20px'));
 
 ?>
